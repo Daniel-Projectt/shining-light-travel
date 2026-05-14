@@ -464,6 +464,34 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   flex-wrap: wrap;
 }
 
+.hero__ext-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.hero__ext-link {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(242, 201, 76, 0.65);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.hero__ext-link:hover {
+  color: var(--gold);
+}
+
+.hero__ext-sep {
+  color: rgba(242, 201, 76, 0.3);
+  font-size: 0.75rem;
+}
+
 .hero__scroll-hint {
   position: absolute;
   bottom: 32px;

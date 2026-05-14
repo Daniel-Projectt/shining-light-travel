@@ -63,8 +63,13 @@
     <div class="hero__bg"></div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
+      <div class="hero__brand">
+        <img src="assets/logos/logo_crest.png?v=4" alt="Shining Light Travel crest" class="hero__crest" />
+        <p class="hero__brand-name">Shining Light</p>
+        <span class="hero__brand-rule"></span>
+        <p class="hero__brand-sub">Travel</p>
+      </div>
       <p class="eyebrow hero__eyebrow">Bespoke Luxury Travel</p>
-      <h1 class="hero__headline">The World, Illuminated</h1>
       <p class="hero__sub">Extraordinary journeys to the world's most remarkable places — curated by Misty Vergakis, your personal luxury travel advisor.</p>
       <div class="hero__buttons">
         <a href="#contact" class="btn btn--gold">Begin Your Journey</a>
@@ -249,15 +254,49 @@
         <p class="partners__subtitle">Our global partnerships give you exclusive amenities, upgrades, and experiences unavailable to the general public.</p>
       </div>
       <div class="partners__grid">
-        <div class="partner-badge fade-in"><span class="partner-badge__name">Virtuoso</span></div>
-        <div class="partner-badge fade-in"><span class="partner-badge__name">Gifted Travel Network<br /><small>Million Dollar Advisor</small></span></div>
-        <div class="partner-badge fade-in"><span class="partner-badge__name">Belmond Bellini Club</span></div>
-        <div class="partner-badge fade-in"><span class="partner-badge__name">Four Seasons<br /><small>Preferred Partner</small></span></div>
-        <div class="partner-badge fade-in"><span class="partner-badge__name">Marriott Stars &amp; Luminous</span></div>
-        <div class="partner-badge fade-in"><span class="partner-badge__name">The Peninsula<br /><small>Pen Club</small></span></div>
-        <div class="partner-badge fade-in"><span class="partner-badge__name">Relais &amp; Châteaux<br /><small>Preferred Partner</small></span></div>
-        <div class="partner-badge fade-in"><span class="partner-badge__name">Rosewood Hotels &amp; Resorts<br /><small>Elite</small></span></div>
-        <div class="partner-badge fade-in"><span class="partner-badge__name">Shangri-La Hotels<br /><small>The Luxury Circle</small></span></div>
+        <!-- Text badges -->
+        <div class="partner-card text-badge fade-in">
+          <div><p class="badge-name">Virtuoso</p><p class="badge-sub">Luxury Travel Network</p></div>
+        </div>
+        <div class="partner-card text-badge fade-in">
+          <div><p class="badge-name">Gifted Travel Network</p><p class="badge-sub">Million Dollar Advisor</p></div>
+        </div>
+        <!-- Logo cards -->
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/ACCOR_PREFERRED_LOGO_BLUE.png" alt="Accor Preferred" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/A_K_100_Club.png" alt="Abercrombie &amp; Kent 100 Club" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/Belmond-bellini-.png" alt="Belmond Bellini Club" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/Belmond_bellini.png" alt="Belmond Bellini" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/Couture_Langham.png" alt="Couture by Langham" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/Couture_by_Langham.png" alt="Couture by Langham" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/fourseasonsArtboard.png" alt="Four Seasons Preferred Partner" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/Hartling_Group.png" alt="Hartling Group" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/Hilton_For_Luxury.png" alt="Hilton for Luxury" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/hyatt_prive.png" alt="Hyatt Privé" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/IHG_Destined.png" alt="IHG Destined" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/IHG_Destined_alt.png" alt="IHG Destined" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/jumeirah_passport_to_lux.png" alt="Jumeirah Passport to Luxury" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/Kempinski.png" alt="Kempinski" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/Mandarin_Oriental.png" alt="Mandarin Oriental Fan Club" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/Mandarin_Oriental_black.png" alt="Mandarin Oriental" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/Marriott_Stars_Luminous.png" alt="Marriott Stars &amp; Luminous" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/logos-marriott-stars-LOGO-.png" alt="Marriott Stars" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/Pan_Pacific_Reserve.png" alt="Pan Pacific Reserve" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/Preferred_Platinum_Partner.png" alt="Preferred Hotels Platinum" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/Relais_Chateaux.png" alt="Relais &amp; Châteaux" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/Relais_Chateaux_alt.png" alt="Relais &amp; Châteaux" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/Rocco_Forte_Knights.png" alt="Rocco Forte Knights" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/Rosewood_Elite.png" alt="Rosewood Elite" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/Shangri-La_Lux_Circle.png" alt="Shangri-La Luxury Circle" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/The_Peninsula_PenClub.png" alt="The Peninsula PenClub" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/The_Set.png" alt="The Set Hotels" /></div>
+        <div class="partner-card fade-in"><img src="assets/partners-transparent/withIN_by_SLH.png" alt="withIN by Small Luxury Hotels" /></div>
+        <div class="partner-card partner-more fade-in">
+          <div class="more-inner">
+            <span class="more-plus">+</span>
+            <span class="more-text">AND MANY MORE</span>
+            <span class="more-sub">Elite partnerships worldwide</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -352,7 +391,7 @@
     <div class="gold-rule footer__top-rule"></div>
     <div class="container footer__inner">
       <a href="#home" class="footer__logo-link">
-        <img src="assets/Logo_and_font_final_polish_gold_2.png" alt="Shining Light Travel" class="footer__logo" />
+        <img src="assets/logos/Logo_and_font_final_polish_gold_2.png" alt="Shining Light Travel" class="footer__logo" />
       </a>
       <p class="footer__tagline"><em>Illuminating the World, One Journey at a Time</em></p>
       <nav class="footer__nav" aria-label="Footer navigation">

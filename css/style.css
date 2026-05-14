@@ -1109,7 +1109,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   text-align: center;
 }
 
-.footer__logo { max-height: 60px; width: auto; margin: 0 auto; opacity: 0.85; }
+.footer__logo { max-height: 60px; width: auto; margin: 0 auto; filter: brightness(0) invert(1); opacity: 0.9; }
 
 .footer__tagline {
   font-family: var(--font-display);

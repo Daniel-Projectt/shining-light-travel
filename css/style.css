@@ -383,6 +383,61 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   max-width: 900px;
 }
 
+.hero-logo-lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.hero-medallion {
+  margin-bottom: 16px;
+}
+
+.medallion-svg {
+  width: 80px;
+  height: 80px;
+  filter: drop-shadow(0 0 8px rgba(242, 201, 76, 0.3));
+}
+
+.hero-logo-main {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.6rem, 6.5vw, 5.2rem);
+  letter-spacing: 0.22em;
+  color: #F2C94C;
+  font-weight: 400;
+  line-height: 1;
+  text-shadow: 0 0 40px rgba(242, 201, 76, 0.2);
+}
+
+.hero-logo-rule {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+  width: 100%;
+  justify-content: center;
+}
+
+.rule-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to var(--dir, right), transparent, #F2C94C);
+  opacity: 0.6;
+  max-width: 120px;
+}
+
+.rule-line:first-child { --dir: right; }
+.rule-line:last-child  { --dir: left;  }
+
+.hero-logo-travel {
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.5em;
+  color: rgba(242, 201, 76, 0.8);
+  font-weight: 400;
+}
+
 .hero__eyebrow {
   font-family: var(--font-heading);
   font-size: 11px;
@@ -679,34 +734,103 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .partners__grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
+  margin-top: 48px;
 }
 
-.partner-badge {
-  border: 1px solid var(--gold);
+.partner-card {
   background: var(--navy-mid);
-  padding: 24px 20px;
-  text-align: center;
+  border: 1px solid rgba(242, 201, 76, 0.2);
+  border-radius: 4px;
+  padding: 28px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 110px;
   transition: var(--transition);
-  cursor: default;
 }
-.partner-badge:hover { background: var(--navy-light); }
+.partner-card:hover {
+  border-color: rgba(242, 201, 76, 0.7);
+  background: var(--navy-light);
+  transform: translateY(-2px);
+}
+.partner-card img {
+  max-width: 150px;
+  max-height: 65px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+.partner-card:hover img { opacity: 1; }
 
-.partner-badge__name {
+/* Logos with white/light backgrounds — show on a light card instead of inverting */
+.partner-card.has-bg {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(242, 201, 76, 0.15);
+}
+.partner-card.has-bg:hover {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(242, 201, 76, 0.5);
+}
+.partner-card.has-bg img {
+  filter: none;
+  opacity: 0.9;
+}
+
+.partner-card.text-badge { flex-direction: column; gap: 4px; }
+
+.partner-more {
+  border: 1px solid rgba(242, 201, 76, 0.4);
+  background: transparent;
+}
+.partner-more:hover {
+  background: rgba(242, 201, 76, 0.05);
+  border-color: var(--gold);
+}
+.more-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.more-plus {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  color: var(--gold);
+  line-height: 1;
+  opacity: 0.7;
+}
+.more-text {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+}
+.more-sub {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: rgba(250,247,240,0.45);
+}
+.badge-name {
   font-family: var(--font-heading);
-  font-size: 11px;
-  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--gold);
-  line-height: 1.6;
+  text-align: center;
+  line-height: 1.5;
 }
-.partner-badge__name small {
-  display: block;
-  font-size: 9px;
-  letter-spacing: 0.15em;
-  color: rgba(242,201,76,0.65);
-  margin-top: 4px;
+.badge-sub {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: rgba(250,247,240,0.55);
+  text-align: center;
 }
 
 /* ─────────────────────────────────────────────────
@@ -999,7 +1123,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
 
   .partners__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .testimonials__grid {
@@ -1021,7 +1145,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
 
   .partners__grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 
   .testimonials__grid {

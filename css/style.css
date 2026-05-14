@@ -383,59 +383,48 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   max-width: 900px;
 }
 
-.hero-logo-lockup {
+.hero__brand {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 28px;
 }
 
-.hero-medallion {
-  margin-bottom: 16px;
+.hero__crest {
+  width: clamp(120px, 14vw, 200px);
+  height: auto;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 2px 14px rgba(0,0,0,0.45));
 }
 
-.medallion-svg {
-  width: 80px;
-  height: 80px;
-  filter: drop-shadow(0 0 8px rgba(242, 201, 76, 0.3));
-}
-
-.hero-logo-main {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(2.6rem, 6.5vw, 5.2rem);
+.hero__brand-name {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 5vw, 58px);
+  font-weight: 600;
   letter-spacing: 0.22em;
-  color: #F2C94C;
-  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--gold);
   line-height: 1;
-  text-shadow: 0 0 40px rgba(242, 201, 76, 0.2);
+  margin-bottom: 6px;
 }
 
-.hero-logo-rule {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-top: 10px;
-  width: 100%;
-  justify-content: center;
-}
-
-.rule-line {
-  flex: 1;
+.hero__brand-rule {
+  display: block;
+  width: 80%;
   height: 1px;
-  background: linear-gradient(to var(--dir, right), transparent, #F2C94C);
-  opacity: 0.6;
-  max-width: 120px;
+  background: var(--gold);
+  margin: 4px auto 6px;
+  opacity: 0.7;
 }
 
-.rule-line:first-child { --dir: right; }
-.rule-line:last-child  { --dir: left;  }
-
-.hero-logo-travel {
-  font-family: 'Cinzel', serif;
-  font-size: 0.78rem;
-  letter-spacing: 0.5em;
-  color: rgba(242, 201, 76, 0.8);
+.hero__brand-sub {
+  font-family: var(--font-heading);
+  font-size: clamp(11px, 1.5vw, 16px);
   font-weight: 400;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.85;
 }
 
 .hero__eyebrow {

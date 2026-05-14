@@ -391,10 +391,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .hero__crest {
-  width: clamp(120px, 14vw, 200px);
+  width: clamp(260px, 42vw, 520px);
   height: auto;
-  margin-bottom: 12px;
-  filter: drop-shadow(0 2px 14px rgba(0,0,0,0.45));
+  margin-bottom: 20px;
+  filter: drop-shadow(0 2px 24px rgba(0,0,0,0.5));
 }
 
 .hero__brand-name {

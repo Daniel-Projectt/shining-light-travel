@@ -180,13 +180,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   align-items: center;
   background: var(--white);
-  padding: 0 22px;
+  padding: 0 16px;
   border-bottom: 2px solid var(--gold);
   height: 86px;
   transition: opacity 0.3s ease;
   text-decoration: none;
 }
 .nav__logo:hover { opacity: 0.85; }
+
+.nav__logo-img {
+  height: 54px;
+  width: auto;
+}
 
 .nav__logo-lockup {
   display: flex;

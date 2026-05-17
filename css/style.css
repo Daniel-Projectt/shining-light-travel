@@ -189,7 +189,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .nav__logo:hover { opacity: 0.85; }
 
 .nav__logo-img {
-  height: 54px;
+  height: 66px;
   width: auto;
 }
 

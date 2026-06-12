@@ -167,11 +167,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .nav__inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   height: 86px;
 }
 
@@ -242,13 +241,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .nav__links {
   display: none;
   align-items: center;
-  gap: 32px;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 0 32px;
+  list-style: none;
 }
 
 .nav__link {
   font-family: var(--font-heading);
-  font-size: 10px;
-  letter-spacing: 0.22em;
+  font-size: 13px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--white);
   position: relative;
@@ -268,12 +270,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .nav__cta {
   font-family: var(--font-heading);
-  font-size: 10px;
-  letter-spacing: 0.22em;
+  font-size: 13px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--gold);
   border: 1px solid var(--gold);
-  padding: 9px 20px;
+  padding: 10px 24px;
   transition: var(--transition);
 }
 .nav__cta:hover {
@@ -358,7 +360,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    ───────────────────────────────────────────────── */
 .hero {
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
+  min-height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -368,9 +371,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero__bg {
   position: absolute;
   inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80');
+  background-image: url('https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=1920&q=80');
   background-size: cover;
-  background-position: center;
+  background-position: center 30%;
   will-change: transform;
 }
 
@@ -590,27 +593,61 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-bottom: 20px;
 }
 
-.about__mission {
-  border-left: 2px solid var(--gold);
-  padding: 16px 20px;
-  margin: 28px 0;
-  background: rgba(242, 201, 76, 0.05);
-}
-
 .about__mission-text {
   font-family: var(--font-heading);
   font-size: 1rem;
   font-style: italic;
   color: var(--navy);
   line-height: 1.6;
-  margin-bottom: 10px;
+  margin: 28px 0 24px;
 }
 
-.about__mission-verse {
-  font-family: var(--font-heading);
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
+.about__verse {
+  text-align: center;
+  padding: 28px 24px;
+  margin: 0 0 28px;
+  position: relative;
+}
+.about__verse::before,
+.about__verse::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+  margin: 0 auto;
+}
+.about__verse::before { margin-bottom: 20px; }
+.about__verse::after  { margin-top: 20px; }
+
+.about__verse-mark {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 4rem;
+  line-height: 0.6;
   color: var(--gold);
+  opacity: 0.5;
+  margin-bottom: 12px;
+}
+
+.about__verse-text {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--navy);
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+
+.about__verse-ref {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
   font-style: normal;
 }
 
@@ -952,6 +989,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .testimonial-card:hover {
   box-shadow: 0 8px 48px rgba(0,0,0,0.13);
   transform: translateY(-2px);
+}
+
+.testimonial-card--solo {
+  grid-column: 1 / -1;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 48px 48px 40px;
 }
 
 .testimonial-card__stars {

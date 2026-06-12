@@ -5,6 +5,17 @@
 (function () {
   'use strict';
 
+  /* ── 0. Hero exact viewport height + scroll-to-top on load ── */
+  if (history.scrollRestoration) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+
+  const hero = document.querySelector('.hero');
+  function setHeroHeight() {
+    if (hero) hero.style.height = window.innerHeight + 'px';
+  }
+  setHeroHeight();
+  window.addEventListener('resize', setHeroHeight, { passive: true });
+
   /* ── 1. Sticky nav ── */
   const nav = document.getElementById('main-nav');
   function updateNav() {

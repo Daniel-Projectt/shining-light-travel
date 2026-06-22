@@ -1014,6 +1014,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   line-height: 1.65;
   margin-bottom: 24px;
 }
+.testimonial-card__quote p { margin: 0 0 1em; }
+.testimonial-card__quote p:last-child { margin-bottom: 0; }
 
 .testimonial-card__footer {
   display: flex;

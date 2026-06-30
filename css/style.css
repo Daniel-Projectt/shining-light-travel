@@ -908,8 +908,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .partner-card:hover img { opacity: 1; }
 
-/* Gifted Travel Network is a square badge — give it more presence so it isn't dwarfed by wordmarks */
-.partner-card img[src*="Gifted_Travel_Network"] { max-width: 88px; max-height: 88px; }
+/* Gifted Travel Network is a full-color square badge (navy + gold) — don't invert it to white,
+   and give it more presence so it isn't dwarfed by the wordmark logos */
+.partner-card img[src*="Gifted_Travel_Network"] {
+  max-width: 92px;
+  max-height: 92px;
+  filter: none;
+  opacity: 1;
+}
 
 /* Logos with white/light backgrounds — show on a light card instead of inverting */
 .partner-card.has-bg {

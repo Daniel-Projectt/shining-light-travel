@@ -110,7 +110,7 @@
        • FormSubmit: 'https://formsubmit.co/her@email.com'    (no signup needed)
      While this stays empty, the form shows the thank-you message but does NOT send
      (safe placeholder so nothing breaks before it's configured). */
-  const FORM_ENDPOINT = '';
+  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/misty@shininglighttravel.com';
 
   const form    = document.getElementById('contact-form');
   const success = document.getElementById('form-success');

@@ -51,6 +51,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .gold-rule { border: none; border-top: 1px solid var(--gold); width: 60px; }
 
+/* Visually hidden, but readable by screen readers & search engines (SEO h1) */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .eyebrow {
   font-family: var(--font-heading);
   font-size: 11px;
@@ -863,7 +874,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .partners__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  /* minmax(0, 1fr) lets columns shrink below logo min-width — prevents mobile overflow */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   margin-top: 48px;
 }
@@ -895,6 +907,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: opacity 0.3s ease;
 }
 .partner-card:hover img { opacity: 1; }
+
+/* Gifted Travel Network is a square badge — give it more presence so it isn't dwarfed by wordmarks */
+.partner-card img[src*="Gifted_Travel_Network"] { max-width: 88px; max-height: 88px; }
 
 /* Logos with white/light backgrounds — show on a light card instead of inverting */
 .partner-card.has-bg {
@@ -1123,6 +1138,27 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .form-textarea { resize: vertical; min-height: 100px; }
 
+/* Budget dropdown — matches inputs, adds a gold chevron */
+.form-select {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23D4A017' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+.form-select:invalid { color: #9aa3ad; }
+
+/* Honeypot anti-spam field — hidden from humans, bots fill it and get rejected */
+.form-hp {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px; height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .form-success {
   background: rgba(242,201,76,0.12);
   border: 1px solid var(--gold);
@@ -1270,7 +1306,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
 
   .partners__grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .testimonials__grid {
@@ -1292,7 +1328,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
 
   .partners__grid {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   .testimonials__grid {

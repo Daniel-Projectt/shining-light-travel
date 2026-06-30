@@ -104,13 +104,37 @@
     });
   });
 
-  /* ── 6. Contact form — success message ── */
+  /* ── 6. Contact form — send to Misty's email via a form service ── */
+  /* ⚙️ SETUP — paste Misty's endpoint here to go LIVE (then the form actually sends):
+       • Formspree:  'https://formspree.io/f/XXXXXXXX'        (hides her email — recommended)
+       • FormSubmit: 'https://formsubmit.co/her@email.com'    (no signup needed)
+     While this stays empty, the form shows the thank-you message but does NOT send
+     (safe placeholder so nothing breaks before it's configured). */
+  const FORM_ENDPOINT = '';
+
   const form    = document.getElementById('contact-form');
   const success = document.getElementById('form-success');
 
   if (form && success) {
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    function showSuccess() {
+      if (submitBtn) submitBtn.style.display = 'none';
+      success.hidden = false;
+      success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      setTimeout(function () {
+        form.reset();
+        if (submitBtn) { submitBtn.style.display = ''; submitBtn.disabled = false; submitBtn.textContent = 'Send My Request'; }
+        success.hidden = true;
+      }, 8000);
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+
+      /* Honeypot — if the hidden field has a value, it's a bot. Drop silently. */
+      const hp = form.querySelector('.form-hp');
+      if (hp && hp.value) return;
 
       /* Basic validation */
       const name  = form.querySelector('#name').value.trim();
@@ -120,18 +144,28 @@
         return;
       }
 
-      /* Hide submit button, show success */
-      const submitBtn = form.querySelector('button[type="submit"]');
-      if (submitBtn) submitBtn.style.display = 'none';
-      success.hidden = false;
-      success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      /* No endpoint configured yet → show success without sending (placeholder) */
+      if (!FORM_ENDPOINT) { showSuccess(); return; }
 
-      /* Reset form values silently after delay */
-      setTimeout(function () {
-        form.reset();
-        if (submitBtn) submitBtn.style.display = '';
-        success.hidden = true;
-      }, 8000);
+      /* Send the submission to the form service */
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      })
+        .then(function (res) {
+          if (res.ok) {
+            showSuccess();
+          } else {
+            if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send My Request'; }
+            alert('Sorry, something went wrong. Please try again or email Misty directly.');
+          }
+        })
+        .catch(function () {
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send My Request'; }
+          alert('Network error — please try again or email Misty directly.');
+        });
     });
   }
 

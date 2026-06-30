@@ -647,7 +647,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-size: clamp(1.45rem, 3.3vw, 2rem);
   font-style: normal;
   font-weight: 400;
-  color: var(--gold-deep);
+  color: var(--navy);
   line-height: 1.55;
   margin-bottom: 20px;
 }

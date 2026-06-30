@@ -104,13 +104,8 @@
     });
   });
 
-  /* ── 6. Contact form — send to Misty's email via a form service ── */
-  /* ⚙️ SETUP — paste Misty's endpoint here to go LIVE (then the form actually sends):
-       • Formspree:  'https://formspree.io/f/XXXXXXXX'        (hides her email — recommended)
-       • FormSubmit: 'https://formsubmit.co/her@email.com'    (no signup needed)
-     While this stays empty, the form shows the thank-you message but does NOT send
-     (safe placeholder so nothing breaks before it's configured). */
-  const FORM_ENDPOINT = '';
+  /* ── 6. Contact form — sends to Misty's inbox via Web3Forms (clean, no ads; her email stays hidden) ── */
+  const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
 
   const form    = document.getElementById('contact-form');
   const success = document.getElementById('form-success');
@@ -132,9 +127,9 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      /* Honeypot — if the hidden field has a value, it's a bot. Drop silently. */
-      const hp = form.querySelector('.form-hp');
-      if (hp && hp.value) return;
+      /* Honeypot — if the hidden botcheck box got ticked, it's a bot. Drop silently. */
+      const hp = form.querySelector('input[name="botcheck"]');
+      if (hp && hp.checked) return;
 
       /* Basic validation */
       const name  = form.querySelector('#name').value.trim();

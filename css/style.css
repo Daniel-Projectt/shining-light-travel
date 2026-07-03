@@ -902,10 +902,16 @@ summary:focus-visible {
   line-height: 1.55;
 }
 
+.exp-card__cover {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
 .exp-card__link {
+  display: inline-block;
   font-family: var(--font-heading);
-  font-size: 10px;
-  letter-spacing: 0.2em;
+  font-size: 12px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--gold);
   transition: var(--transition);

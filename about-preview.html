@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preview — Meet Your Advisors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cinzel:wght@400;500;600&family=Pinyon+Script&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- Uses the REAL site stylesheet so fonts/colors match exactly -->
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body { background: var(--cream); }
+    .preview-flag {
+      background: var(--navy); color: var(--gold);
+      font-family: var(--font-heading); font-size: 11px; letter-spacing: 0.25em;
+      text-transform: uppercase; text-align: center; padding: 10px;
+    }
+    /* Section intro centered */
+    .advisors__header { text-align: center; max-width: 780px; margin: 0 auto 56px; }
+    .advisors__header .gold-rule { margin: 0 auto 24px; }
+    .advisors__header .eyebrow { color: var(--gold-deep); }
+    .advisors__intro {
+      font-family: var(--font-display); font-style: italic;
+      font-size: clamp(18px, 2.4vw, 24px); line-height: 1.6; color: var(--navy);
+      margin-top: 18px;
+    }
+    /* Team photo */
+    .advisors__team { max-width: 760px; margin: 0 auto 80px; }
+    .advisors__team-frame { position: relative; }
+    .advisors__team-frame::before {
+      content: ''; position: absolute; inset: -12px -12px 12px 12px;
+      border: 1px solid var(--gold); pointer-events: none;
+    }
+    .advisors__ph {
+      position: relative; background: linear-gradient(145deg, var(--navy-mid), var(--navy-light));
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      color: rgba(242,201,76,0.85); font-family: var(--font-heading);
+      font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; line-height: 1.8;
+    }
+    .advisors__team .advisors__ph { aspect-ratio: 16/10; }
+
+    /* Advisor rows */
+    .advisor-row { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; margin-bottom: 72px; }
+    .advisor-row:last-child { margin-bottom: 0; }
+    .advisor__photo-frame { position: relative; width: 100%; max-width: 380px; margin: 0 auto; }
+    .advisor__photo-frame::before {
+      content: ''; position: absolute; inset: -12px 12px 12px -12px;
+      border: 1px solid var(--gold); pointer-events: none;
+    }
+    .advisor__photo-frame .advisors__ph { aspect-ratio: 4/5; }
+    .advisor__name {
+      font-family: var(--font-heading); font-size: 13px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--gold-deep); margin-bottom: 6px;
+    }
+    .advisor__title {
+      font-family: var(--font-display); font-style: italic; font-weight: 400;
+      font-size: clamp(24px, 3vw, 34px); color: var(--navy); line-height: 1.15; margin-bottom: 22px;
+    }
+    .advisor__body { font-size: 16px; line-height: 1.85; color: #2c3e50; margin-bottom: 18px; }
+
+    @media (min-width: 820px) {
+      .advisor-row { grid-template-columns: 0.85fr 1.15fr; gap: 64px; }
+      .advisor-row--reverse .advisor__col-photo { order: 2; }
+      .advisor-row--reverse .advisor__col-text  { order: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-flag">Preview — Meet Your Advisors · Layout only, real photos &amp; final bios pending</div>
+
+  <section class="about">
+    <div class="container">
+
+      <!-- Section intro -->
+      <div class="advisors__header">
+        <div class="gold-rule"></div>
+        <p class="eyebrow">Meet Your Advisors</p>
+        <h2 class="section-headline" style="color:var(--navy)">The Team Behind<br /><em>Every Journey</em></h2>
+        <p class="advisors__intro">A mother-daughter team, dedicated to crafting journeys that bring families closer and turn dreams into lifelong memories.</p>
+      </div>
+
+      <!-- Team photo (both together) -->
+      <div class="advisors__team">
+        <div class="advisors__team-frame">
+          <div class="advisors__ph">Team Photo<br />Misty &amp; Debbie together</div>
+        </div>
+      </div>
+
+      <!-- Advisor 1 — Misty (photo left) -->
+      <div class="advisor-row">
+        <div class="advisor__col-photo">
+          <div class="advisor__photo-frame"><div class="advisors__ph">Misty's Portrait</div></div>
+        </div>
+        <div class="advisor__col-text">
+          <p class="advisor__name">Misty Vergakis</p>
+          <p class="advisor__title">Luxury Travel Advisor</p>
+          <p class="advisor__body">Growing up in a Navy family and moving frequently from a young age instilled in me a deep appreciation for travel and the meaningful experiences it creates. I have had the privilege of living in beautiful places around the world, from San Diego to the Philippines to Florida. For the past 25 years, South Carolina has been home.</p>
+          <p class="advisor__body">I believe the best gifts are experiences, and planning exceptional vacations is truly what I love. I specialize in luxury travel for families and couples, designing personalized getaways that create lasting memories.</p>
+        </div>
+      </div>
+
+      <!-- Advisor 2 — Debbie (photo right) -->
+      <div class="advisor-row advisor-row--reverse">
+        <div class="advisor__col-photo">
+          <div class="advisor__photo-frame"><div class="advisors__ph">Debbie's Portrait</div></div>
+        </div>
+        <div class="advisor__col-text">
+          <p class="advisor__name">Debbie Giroux</p>
+          <p class="advisor__title">Associate Advisor</p>
+          <p class="advisor__body"><em>[ Sample text — Debbie's real bio goes here ]</em>&nbsp; With a lifelong passion for exploration and an eye for the small details that make a journey unforgettable, Debbie brings warmth, care, and years of experience to every itinerary she designs.</p>
+          <p class="advisor__body">Alongside her daughter Misty, she helps families and couples travel with ease — turning the dream of a perfect getaway into a seamless, memorable reality.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</body>
+</html>

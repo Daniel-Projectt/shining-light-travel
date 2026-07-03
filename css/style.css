@@ -683,7 +683,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-family: var(--font-display); font-style: italic;
   font-size: clamp(18px, 2.4vw, 24px); line-height: 1.6; color: var(--navy); margin-top: 16px;
 }
-.advisors__team { max-width: 760px; margin: 0 auto 80px; }
+.advisors__team { max-width: 500px; margin: 0 auto 80px; }
+.advisors__team-img {
+  position: relative; z-index: 1; display: block;
+  width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 30%;
+}
+.advisor__img {
+  position: relative; z-index: 1; display: block;
+  width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 20%;
+}
 .advisors__team-frame { position: relative; }
 .advisors__team-frame::before {
   content: ''; position: absolute; inset: -12px -12px 12px 12px;

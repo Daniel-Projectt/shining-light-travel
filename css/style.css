@@ -1468,6 +1468,19 @@ summary:focus-visible {
   .mobile-cta.is-visible { transform: translateY(0); opacity: 1; pointer-events: auto; }
 }
 
+/* ── Motion vocabulary (Phase 7) — gold rules draw in when their section reveals ── */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in .section-header__rule,
+  .fade-in .advisors__header .gold-rule {
+    width: 0;
+    transition: width 0.7s ease 0.15s;
+  }
+  .fade-in.visible .section-header__rule,
+  .fade-in.visible .advisors__header .gold-rule {
+    width: 60px;
+  }
+}
+
 /* ─────────────────────────────────────────────────
    FOOTER
    ───────────────────────────────────────────────── */

@@ -190,4 +190,31 @@
     if (contactSection) ctaObserver.observe(contactSection);
   }
 
+  /* ── 8. Process step numbers count up (01 → 05) when the section enters ── */
+  const processSection = document.getElementById('process');
+  if (processSection && 'IntersectionObserver' in window && !prefersReducedMotion) {
+    const nums = processSection.querySelectorAll('.process__step-num');
+    const targets = Array.prototype.map.call(nums, function (n) { return parseInt(n.textContent, 10) || 0; });
+    let counted = false;
+    const countObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting || counted) return;
+        counted = true;
+        Array.prototype.forEach.call(nums, function (n, i) {
+          const target = targets[i];
+          let cur = 0;
+          n.textContent = '00';
+          const tick = function () {
+            cur++;
+            n.textContent = String(Math.min(cur, target)).padStart(2, '0');
+            if (cur < target) setTimeout(tick, 130);
+          };
+          setTimeout(tick, 200 + i * 120);
+        });
+        countObserver.disconnect();
+      });
+    }, { threshold: 0.3 });
+    countObserver.observe(processSection);
+  }
+
 })();

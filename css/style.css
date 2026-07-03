@@ -36,6 +36,21 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* OPTIONAL elegant on-brand scrollbar (navy + gold). Disabled for now.
+   To enable: remove the surrounding comment markers.
+@media (min-width: 768px) {
+  html { scrollbar-width: thin; scrollbar-color: var(--gold-deep) var(--navy); }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--navy); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--gold-deep);
+    border-radius: 999px;
+    border: 3px solid var(--navy);
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+}
+*/
+
 img { max-width: 100%; height: auto; display: block; }
 a { text-decoration: none; color: inherit; transition: var(--transition); }
 ul { list-style: none; }

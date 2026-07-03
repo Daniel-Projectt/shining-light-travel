@@ -36,8 +36,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* OPTIONAL elegant on-brand scrollbar (navy + gold). Disabled for now.
-   To enable: remove the surrounding comment markers.
+/* Elegant on-brand scrollbar (navy + gold) — desktop */
 @media (min-width: 768px) {
   html { scrollbar-width: thin; scrollbar-color: var(--gold-deep) var(--navy); }
   ::-webkit-scrollbar { width: 10px; height: 10px; }
@@ -49,11 +48,6 @@ body {
   }
   ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 }
-*/
-
-/* Hide the browser scrollbar for a clean look — scrolling still works (wheel / touch / keys) */
-* { scrollbar-width: none; -ms-overflow-style: none; }
-::-webkit-scrollbar { width: 0; height: 0; display: none; }
 
 img { max-width: 100%; height: auto; display: block; }
 a { text-decoration: none; color: inherit; transition: var(--transition); }

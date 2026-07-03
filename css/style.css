@@ -1200,9 +1200,22 @@ summary:focus-visible {
 
 .testimonial-card__footer {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  align-items: center;
+  gap: 16px;
 }
+.testimonial-card__medallion {
+  flex-shrink: 0;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  display: grid; place-items: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--gold-deep);
+  background: var(--cream);
+}
+.testimonial-card__attribution { display: flex; flex-direction: column; gap: 3px; }
 
 .testimonial-card__name {
   font-family: var(--font-heading);
@@ -1211,12 +1224,71 @@ summary:focus-visible {
   text-transform: uppercase;
   color: var(--navy);
 }
-
 .testimonial-card__destination {
   font-size: 13px;
-  color: #7a8a9a;
+  color: var(--gold-deep);
   font-style: italic;
 }
+.testimonial-card__home {
+  font-size: 11px;
+  color: #7a8a9a;
+  font-style: normal;
+  letter-spacing: 0.02em;
+}
+
+/* Pull-quote banner above the cards */
+.testimonials__pullquote {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+.testimonials__pullquote-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.2;
+  color: var(--navy);
+}
+.testimonials__pullquote-cite {
+  font-family: var(--font-heading);
+  font-style: normal;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+
+/* "Read more" expander (native <details>, no JS) */
+.testimonial-card__more { margin-top: 4px; }
+.testimonial-card__more summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  padding: 8px 0;
+}
+.testimonial-card__more summary::-webkit-details-marker { display: none; }
+.testimonial-card__more summary::after {
+  content: '';
+  width: 7px; height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.25s ease;
+}
+.testimonial-card__more[open] summary::after { transform: translateY(1px) rotate(-135deg); }
+.testimonial-card__more[open] summary { margin-bottom: 6px; }
 
 /* ─────────────────────────────────────────────────
    CONTACT

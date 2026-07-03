@@ -168,4 +168,26 @@
     });
   }
 
+  /* ── 7. Sticky mobile CTA — hidden while the hero or contact section is in view ── */
+  const mobileCta = document.querySelector('.mobile-cta');
+  const heroSection = document.getElementById('home');
+  const contactSection = document.getElementById('contact');
+  if (mobileCta && 'IntersectionObserver' in window) {
+    let heroVisible = true;
+    let contactVisible = false;
+    const ctaObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.target.id === 'home') heroVisible = entry.isIntersecting;
+        if (entry.target.id === 'contact') contactVisible = entry.isIntersecting;
+      });
+      if (heroVisible || contactVisible) {
+        mobileCta.classList.remove('is-visible');
+      } else {
+        mobileCta.classList.add('is-visible');
+      }
+    }, { threshold: 0.12 });
+    if (heroSection) ctaObserver.observe(heroSection);
+    if (contactSection) ctaObserver.observe(contactSection);
+  }
+
 })();

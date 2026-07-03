@@ -1414,11 +1414,48 @@ summary:focus-visible {
 }
 
 .contact__note {
-  margin-top: 16px;
+  margin-top: 0;
   font-size: 13px;
   color: rgba(250,247,240,0.68);
   letter-spacing: 0.04em;
   padding: 0 4px;
+  text-align: center;
+}
+
+/* Personal note + Misty portrait by the form (high-leverage conversion) */
+.contact__personal {
+  display: flex; align-items: center; gap: 16px; justify-content: center;
+  max-width: 560px; margin: -8px auto 44px;
+}
+.contact__personal-photo {
+  flex-shrink: 0; width: 72px; height: 72px; border-radius: 50%;
+  object-fit: cover; object-position: center 18%;
+  border: 2px solid var(--gold); padding: 2px; background: var(--navy);
+}
+.contact__personal-text {
+  font-family: var(--font-display); font-style: italic; font-size: 18px;
+  line-height: 1.5; color: var(--cream); text-align: left;
+}
+.contact__personal-text span {
+  display: block; font-size: 13px; color: var(--gold); font-style: normal;
+  letter-spacing: 0.14em; text-transform: uppercase; margin-top: 5px;
+}
+
+/* Sticky mobile CTA */
+.mobile-cta { display: none; }
+@media (max-width: 767px) {
+  .mobile-cta {
+    display: block; position: fixed; right: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    z-index: 90;
+    background: var(--gold); color: var(--navy);
+    font-family: var(--font-heading); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 13px 22px; border-radius: 999px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+    transform: translateY(140%); opacity: 0; pointer-events: none;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+  }
+  .mobile-cta.is-visible { transform: translateY(0); opacity: 1; pointer-events: auto; }
 }
 
 /* ─────────────────────────────────────────────────

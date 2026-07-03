@@ -457,6 +457,10 @@
         <h2 class="section-headline section-headline--white contact__headline">Let's Plan Something<br /><em>Extraordinary</em></h2>
         <p class="contact__sub">Whether you're dreaming of the temples of Bhutan, the fjords of Norway, or a private safari in Botswana — Misty will handle every detail.</p>
       </div>
+      <div class="contact__personal">
+        <img class="contact__personal-photo" src="assets/advisors/misty.jpg" alt="Misty Vergakis" loading="lazy" />
+        <p class="contact__personal-text">&ldquo;I read every inquiry personally, and respond within 24 hours.&rdquo;<span>&mdash; Misty</span></p>
+      </div>
       <div class="contact__form-wrap">
         <form class="contact__form" id="contact-form" novalidate>
           <div class="form-group">
@@ -497,14 +501,19 @@
           <!-- Honeypot spam protection (Web3Forms): bots tick this hidden box and get rejected -->
           <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none !important;" aria-hidden="true" />
           <div class="form-group form-group--full">
+            <p class="contact__note">We respond within 24 hours. Your information is always private.</p>
+          </div>
+          <div class="form-group form-group--full">
             <button type="submit" class="btn btn--gold btn--full">Send My Request</button>
           </div>
           <div class="form-success" id="form-success" aria-live="polite" hidden>
             <span class="form-success__icon">&#10003;</span>
             Thank you! Misty will be in touch within 24 hours.
           </div>
+          <!-- Optional second path — uncomment and add the scheduling URL:
+          <p class="contact__schedule"><a href="TODO_SCHEDULING_URL" target="_blank" rel="noopener">Prefer to talk? Schedule a complimentary 20-minute consultation &rarr;</a></p>
+          -->
         </form>
-        <p class="contact__note">We respond within 24 hours. Your information is always private.</p>
       </div>
     </div>
   </section>
@@ -536,6 +545,9 @@
       <p class="footer__copy">&copy; 2026 Shining Light Travel. Misty Vergakis, Luxury Travel Advisor. All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- Sticky mobile CTA (shown only on phones, hidden while hero/contact are in view) -->
+  <a href="#contact" class="mobile-cta">Start Planning</a>
 
   <script src="js/main.js" defer></script>
 </body>

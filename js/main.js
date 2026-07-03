@@ -30,12 +30,16 @@
 
   /* ── 2. Parallax hero background ── */
   const heroBg = document.querySelector('.hero__bg');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function updateParallax() {
     if (!heroBg) return;
-    const offset = window.scrollY * 0.35;
+    /* clamp so the image never drifts far enough to expose an edge */
+    const offset = Math.min(window.scrollY * 0.35, window.innerHeight * 0.4);
     heroBg.style.transform = 'translateY(' + offset + 'px)';
   }
-  window.addEventListener('scroll', updateParallax, { passive: true });
+  if (!prefersReducedMotion) {
+    window.addEventListener('scroll', updateParallax, { passive: true });
+  }
 
   /* ── 3. Fade-in on scroll (IntersectionObserver) ── */
   const fadeEls = document.querySelectorAll('.fade-in');

@@ -381,17 +381,39 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .hero__bg {
   position: absolute;
-  inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=1920&q=80');
+  /* extra overdraw at top so the scroll parallax never exposes a gap */
+  inset: -12% 0 0 0;
+  background-image: url('../assets/img/hero.jpg');
+  background-image: -webkit-image-set(
+    url('../assets/img/hero.webp') type('image/webp'),
+    url('../assets/img/hero.jpg')  type('image/jpeg'));
+  background-image: image-set(
+    url('../assets/img/hero.webp') type('image/webp'),
+    url('../assets/img/hero.jpg')  type('image/jpeg'));
   background-size: cover;
   background-position: center 30%;
   will-change: transform;
+}
+@media (max-width: 640px) {
+  .hero__bg { background-image: url('../assets/img/hero-mobile.webp'); }
+}
+/* Subtle cinematic drift — composes with the JS translateY parallax via the `scale` property */
+@media (prefers-reduced-motion: no-preference) {
+  .hero__bg { animation: heroDrift 36s ease-in-out infinite alternate; }
+  @keyframes heroDrift {
+    from { scale: 1.03; }
+    to   { scale: 1.11; }
+  }
 }
 
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(11, 31, 58, 0.55);
+  /* softer at top so more of the beloved photo shows; darker at the base for text contrast */
+  background: linear-gradient(to bottom,
+    rgba(11, 31, 58, 0.30) 0%,
+    rgba(11, 31, 58, 0.44) 55%,
+    rgba(11, 31, 58, 0.72) 100%);
 }
 
 .hero__content {
@@ -410,10 +432,29 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .hero__crest {
-  width: clamp(340px, 58vw, 700px);
+  width: clamp(280px, 38vw, 460px);
   height: auto;
   margin-bottom: 20px;
   filter: drop-shadow(0 2px 24px rgba(0,0,0,0.5));
+}
+
+/* Staged hero entrance (crest -> eyebrow -> sub -> buttons). Static if reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero__brand,
+  .hero__eyebrow,
+  .hero__sub,
+  .hero__buttons {
+    opacity: 0;
+    animation: heroRise 0.85s ease forwards;
+  }
+  .hero__brand   { animation-delay: 0.15s; }
+  .hero__eyebrow { animation-delay: 0.30s; }
+  .hero__sub     { animation-delay: 0.45s; }
+  .hero__buttons { animation-delay: 0.60s; }
+  @keyframes heroRise {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: none; }
+  }
 }
 
 .hero__brand-name {

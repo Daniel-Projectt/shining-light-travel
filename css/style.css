@@ -51,6 +51,10 @@ body {
 }
 */
 
+/* Hide the browser scrollbar for a clean look — scrolling still works (wheel / touch / keys) */
+* { scrollbar-width: none; -ms-overflow-style: none; }
+::-webkit-scrollbar { width: 0; height: 0; display: none; }
+
 img { max-width: 100%; height: auto; display: block; }
 a { text-decoration: none; color: inherit; transition: var(--transition); }
 ul { list-style: none; }

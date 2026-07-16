@@ -1498,7 +1498,7 @@ summary:focus-visible {
 .footer__top-rule {
   border: none;
   border-top: 2px solid var(--gold);
-  margin-bottom: 64px;
+  margin: 0 auto 64px;
 }
 
 .footer__inner {
@@ -1509,7 +1509,7 @@ summary:focus-visible {
   text-align: center;
 }
 
-.footer__logo { max-height: 66px; width: auto; margin: 0 auto; opacity: 1; }
+.footer__logo { width: 300px; max-width: 80vw; height: auto; margin: 0 auto; opacity: 1; }
 
 .footer__tagline {
   font-family: var(--font-display);

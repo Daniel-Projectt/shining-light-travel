@@ -5,16 +5,14 @@
 (function () {
   'use strict';
 
-  /* ── 0. Hero exact viewport height + scroll-to-top on load ── */
+  /* ── 0. Scroll-to-top on load — but ONLY when there's no deep-link hash,
+     so shared anchors like #experiences still land on the right section.
+     Hero height is handled purely in CSS (100svh) to avoid mobile
+     address-bar jump — no JS height code here. ── */
   if (history.scrollRestoration) history.scrollRestoration = 'manual';
-  window.scrollTo(0, 0);
-
-  const hero = document.querySelector('.hero');
-  function setHeroHeight() {
-    if (hero) hero.style.height = window.innerHeight + 'px';
+  if (!window.location.hash) {
+    window.scrollTo(0, 0);
   }
-  setHeroHeight();
-  window.addEventListener('resize', setHeroHeight, { passive: true });
 
   /* ── 1. Sticky nav ── */
   const nav = document.getElementById('main-nav');
@@ -71,16 +69,30 @@
   const overlayClose = document.getElementById('overlay-close');
   const overlayLinks = navOverlay ? navOverlay.querySelectorAll('.nav__overlay-link') : [];
 
+  function getFocusable() {
+    if (!navOverlay) return [];
+    return Array.prototype.slice.call(
+      navOverlay.querySelectorAll('a[href], button:not([disabled])')
+    );
+  }
+
   function openOverlay() {
+    if (!navOverlay) return;
     navOverlay.classList.add('open');
-    hamburger.setAttribute('aria-expanded', 'true');
+    if (hamburger) hamburger.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
+    /* Move focus into the overlay so Tab is trapped inside it */
+    if (overlayClose) overlayClose.focus();
   }
 
   function closeOverlay() {
+    if (!navOverlay) return;
+    const wasOpen = navOverlay.classList.contains('open');
     navOverlay.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
+    if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    /* Return focus to the hamburger that opened the menu */
+    if (wasOpen && hamburger) hamburger.focus();
   }
 
   if (hamburger) hamburger.addEventListener('click', openOverlay);
@@ -89,6 +101,24 @@
   overlayLinks.forEach(function (link) {
     link.addEventListener('click', closeOverlay);
   });
+
+  /* Focus trap — while the overlay is open, keep Tab cycling within it */
+  if (navOverlay) {
+    navOverlay.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab' || !navOverlay.classList.contains('open')) return;
+      const focusable = getFocusable();
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last  = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
+  }
 
   /* Close overlay on Escape key */
   document.addEventListener('keydown', function (e) {
@@ -116,6 +146,33 @@
 
   if (form && success) {
     const submitBtn = form.querySelector('button[type="submit"]');
+    const nameInput  = form.querySelector('#name');
+    const emailInput = form.querySelector('#email');
+    const nameError  = form.querySelector('#name-error');
+    const emailError = form.querySelector('#email-error');
+    const formError  = form.querySelector('#form-error');
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function setFieldError(input, errorEl, message) {
+      if (errorEl) errorEl.textContent = message || '';
+      if (input) input.classList.toggle('is-invalid', !!message);
+    }
+    function clearFieldError(input, errorEl) { setFieldError(input, errorEl, ''); }
+
+    function showFormError(message) {
+      if (!formError) return;
+      formError.textContent = message;
+      formError.hidden = false;
+    }
+    function clearFormError() {
+      if (!formError) return;
+      formError.textContent = '';
+      formError.hidden = true;
+    }
+
+    /* Clear a field's error the moment the user starts fixing it */
+    if (nameInput)  nameInput.addEventListener('input', function () { clearFieldError(nameInput, nameError); });
+    if (emailInput) emailInput.addEventListener('input', function () { clearFieldError(emailInput, emailError); });
 
     function showSuccess() {
       if (submitBtn) submitBtn.style.display = 'none';
@@ -135,13 +192,28 @@
       const hp = form.querySelector('input[name="botcheck"]');
       if (hp && hp.checked) return;
 
-      /* Basic validation */
-      const name  = form.querySelector('#name').value.trim();
-      const email = form.querySelector('#email').value.trim();
-      if (!name || !email) {
-        form.querySelector('#name').focus();
-        return;
+      /* Inline validation */
+      clearFormError();
+      clearFieldError(nameInput, nameError);
+      clearFieldError(emailInput, emailError);
+
+      const name  = nameInput ? nameInput.value.trim() : '';
+      const email = emailInput ? emailInput.value.trim() : '';
+      let firstInvalid = null;
+
+      if (!name) {
+        setFieldError(nameInput, nameError, 'Please enter your name.');
+        firstInvalid = firstInvalid || nameInput;
       }
+      if (!email) {
+        setFieldError(emailInput, emailError, 'Please enter your email address.');
+        firstInvalid = firstInvalid || emailInput;
+      } else if (!EMAIL_RE.test(email)) {
+        setFieldError(emailInput, emailError, 'Please enter a valid email address.');
+        firstInvalid = firstInvalid || emailInput;
+      }
+
+      if (firstInvalid) { firstInvalid.focus(); return; }
 
       /* No endpoint configured yet → show success without sending (placeholder) */
       if (!FORM_ENDPOINT) { showSuccess(); return; }
@@ -158,12 +230,12 @@
             showSuccess();
           } else {
             if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send My Request'; }
-            alert('Sorry, something went wrong. Please try again or email Misty directly.');
+            showFormError('Sorry, something went wrong. Please try again or email us directly at misty@shininglighttravel.com.');
           }
         })
         .catch(function () {
           if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send My Request'; }
-          alert('Network error — please try again or email Misty directly.');
+          showFormError('Network error — please try again or email us directly at misty@shininglighttravel.com.');
         });
     });
   }

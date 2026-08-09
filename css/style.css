@@ -396,7 +396,8 @@ summary:focus-visible {
    ───────────────────────────────────────────────── */
 .hero {
   position: relative;
-  height: 100vh;
+  height: 100vh; /* fallback for browsers without svh support */
+  height: 100svh; /* small viewport height — stable when mobile address bar shows/hides */
   min-height: 600px;
   display: flex;
   align-items: center;
@@ -602,20 +603,22 @@ summary:focus-visible {
    ───────────────────────────────────────────────── */
 /* ── Credentials band (Virtuoso / GTN / Forbes lockup, right below the hero) ── */
 .credentials {
-  background: var(--white);
-  padding: 26px 24px;
+  background: var(--cream);
+  padding: 18px 24px;
   text-align: center;
-  border-bottom: 1px solid rgba(11, 31, 58, 0.07);
+  border-bottom: 1px solid rgba(11, 31, 58, 0.06);
 }
 .credentials__img {
   width: 100%;
-  max-width: 720px;
+  max-width: 500px;
   height: auto;
   margin: 0 auto;
   display: block;
+  opacity: 0.72;
 }
 @media (max-width: 600px) {
-  .credentials { padding: 20px 18px; }
+  .credentials { padding: 14px 18px; }
+  .credentials__img { max-width: 340px; }
 }
 
 .about {
@@ -820,7 +823,9 @@ summary:focus-visible {
   font-family: var(--font-display); font-style: italic;
   font-size: 17px; color: rgba(11,31,58,0.6); line-height: 1.6; max-width: 440px;
 }
-.eyebrow--gold-deep { color: var(--gold-deep); }
+/* Darker gold so this eyebrow passes WCAG AA (4.5:1) on the cream About section.
+   Only this cream use is darkened — navy uses of --gold-deep are untouched. */
+.eyebrow--gold-deep { color: #8a6807; }
 .advisor__pending {
   font-family: var(--font-display); font-style: italic; font-size: 17px;
   color: rgba(11,31,58,0.4); padding: 22px 0; max-width: 420px;
@@ -1434,6 +1439,31 @@ summary:focus-visible {
   font-size: 18px;
   margin-right: 8px;
 }
+
+/* Inline validation — soft red-gold error tone tuned to the luxe palette */
+.field-error {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: #E8A08C;
+}
+.field-error:empty { display: none; }
+.form-input.is-invalid,
+.form-input.is-invalid:focus { border-color: #E8A08C; }
+.form-error {
+  margin: 0;
+  padding: 14px 18px;
+  background: rgba(232,160,140,0.10);
+  border: 1px solid rgba(232,160,140,0.55);
+  border-radius: 4px;
+  color: #E8A08C;
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+}
+.form-error[hidden] { display: none; }
 
 .contact__note {
   margin-top: 0;

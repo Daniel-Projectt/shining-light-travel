@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Local backups (kept on disk, not published)
+*.backup.html
+*.backup.css
+assets/img/_originals/
+
+# One-off image/dev scripts
+_opt-partners.js
+process-partners.js
+remove-bg.js
+
+# Stray / internal (not for the public site)
+IAMAX
+roadmap.html
